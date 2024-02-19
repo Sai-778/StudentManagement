@@ -1,10 +1,11 @@
-package org.example.studentmanagement.enity;
+package org.example.studentmanagement.entity;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-@jakarta.persistence.Entity
+@Entity
 @Table(name = "students")
 
 public class Student {

@@ -1,6 +1,7 @@
 package org.example.studentmanagement.controller;
 
-import org.example.studentmanagement.enity.Student;
+import org.example.studentmanagement.entity.Student;
+import org.example.studentmanagement.repository.StudentRepository;
 import org.example.studentmanagement.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -59,4 +60,20 @@ public class StudentController {
     public void deleteStudent(@PathVariable Long id) {
         studentService.deleteStudent(id);
     }
+
+
+
+    @GetMapping("/student/details")
+    public Student getStudentsByDepartment(@RequestParam String email,@RequestParam String firstName) {
+        System.out.println("in controller");
+        return studentService.getStudentEmailWithFirstName(email,firstName);
+    }
+
+    @GetMapping("/query")
+    public  Student getStudentByQuery(@RequestParam String firstName){
+        return studentService.getStudentDeatils(firstName);
+
+    }
+
+
 }
