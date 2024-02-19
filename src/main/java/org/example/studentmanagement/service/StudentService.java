@@ -1,6 +1,6 @@
 package org.example.studentmanagement.service;
 
-import org.example.studentmanagement.enity.Student;
+import org.example.studentmanagement.entity.Student;
 import org.example.studentmanagement.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -57,5 +57,21 @@ public class StudentService {
 
     public void deleteStudent(Long id) {
         studentRepository.deleteById(id);
+
+
+
+
+
+    }
+
+    public Student getStudentEmailWithFirstName(String email,String firstName){
+        System.out.println("in service");
+        System.out.println(studentRepository.findByEmailAndFirstName(email,firstName));
+        return studentRepository.findByEmailAndFirstName(email,firstName);
+    }
+
+
+    public Student getStudentDeatils(String firstName) {
+        return studentRepository.getStudentDeatils(firstName);
     }
 }
