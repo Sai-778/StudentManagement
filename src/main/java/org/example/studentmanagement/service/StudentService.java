@@ -1,8 +1,10 @@
 package org.example.studentmanagement.service;
 
+import jakarta.transaction.Transactional;
 import org.example.studentmanagement.entity.Student;
 import org.example.studentmanagement.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 import java.util.Optional;
@@ -73,5 +75,15 @@ public class StudentService {
 
     public Student getStudentDeatils(String firstName) {
         return studentRepository.getStudentDeatils(firstName);
+    }
+
+
+
+    @Transactional
+    public Student deleteStudentByEmail(String email){
+        int deletedStudent= studentRepository.deleteStudentByEmail(email);
+        if(deletedStudent>0){
+            return new Student();
+        }return null;
     }
 }

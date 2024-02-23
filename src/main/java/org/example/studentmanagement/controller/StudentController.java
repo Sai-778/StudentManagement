@@ -4,6 +4,8 @@ import org.example.studentmanagement.entity.Student;
 import org.example.studentmanagement.repository.StudentRepository;
 import org.example.studentmanagement.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -69,11 +71,24 @@ public class StudentController {
         return studentService.getStudentEmailWithFirstName(email,firstName);
     }
 
-    @GetMapping("/query")
+    @GetMapping("/query/search")
     public  Student getStudentByQuery(@RequestParam String firstName){
         return studentService.getStudentDeatils(firstName);
 
     }
+
+
+    @DeleteMapping("/query/delete")
+    public ResponseEntity<String> deleteStudentByQuery(@RequestParam String email){
+        Student deletedStudent= studentService.deleteStudentByEmail(email);
+
+        if (deletedStudent != null) {
+            return ResponseEntity.ok("Student with email " + email + " deleted successfully");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Student with email " + email + " not found");
+        }
+    }
+
 
 
 }
