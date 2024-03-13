@@ -1,3 +1,8 @@
-a project based on springboot application
-on student managment system 
-1.add a student 2.find student 3.update syudent 3.delete student
+Student Management System using Spring Boot
+This project is a simple Student Management System implemented using Spring Boot framework. It provides APIs to perform basic CRUD operations on student records.
+
+Features
+Add a student
+Find a student
+Update a student
+Delete a student
